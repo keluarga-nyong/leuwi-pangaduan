@@ -43,15 +43,6 @@
 						</div>
 					</div>
 
-					<div class="text-center p-t-50">
-						<span class="txt1">
-							Don't have an account?
-						</span>
-
-						<a class="txt2" href="{{ route('user.login') }}">
-							Sign Up
-						</a>
-					</div>
 				</form>
 			</div>
 		</div>

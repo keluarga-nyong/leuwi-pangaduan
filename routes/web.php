@@ -10,7 +10,7 @@ use App\Http\Controllers\Admin\PelangganController;
 use App\Http\Controllers\Admin\PenginapanController;
 use App\Http\Controllers\Admin\Pemesanan_penginapanController;
 use App\Http\Controllers\Admin\Pemesanan_tiketController;
-use App\Http\Controllers\Doctor\DoctorController;
+use App\Http\Controllers\Pegawai\PegawaiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -88,18 +88,18 @@ Route::prefix('admin')->name('admin.')->group(function(){
 
 });
 
-Route::prefix('doctor')->name('doctor.')->group(function(){
+Route::prefix('pegawai')->name('pegawai.')->group(function(){
 
-       Route::middleware(['guest:doctor','PreventBackHistory'])->group(function(){
-            Route::view('/login','dashboard.doctor.login')->name('login');
-            Route::view('/register','dashboard.doctor.register')->name('register');
-            Route::post('/create',[DoctorController::class,'create'])->name('create');
-            Route::post('/check',[DoctorController::class,'check'])->name('check');
-       });
+       Route::middleware(['guest:pegawai','PreventBackHistory'])->group(function(){
+           Route::view('/login','pegawai.login')->name('login');
+           Route::post('/check',[PegawaiController::class,'check'])->name('check');
+            // Route::view('/register','pegawai.register')->name('register');
+            // Route::post('/create',[PegawaiController::class,'create'])->name('create');
+        });
 
-       Route::middleware(['auth:doctor','PreventBackHistory'])->group(function(){
-            Route::view('/home','dashboard.doctor.home')->name('home');
-            Route::post('logout',[DoctorController::class,'logout'])->name('logout');
+       Route::middleware(['auth:pegawai','PreventBackHistory'])->group(function(){
+            Route::view('/home','pegawai.home')->name('home');
+            Route::post('logout',[PegawaiController::class,'logout'])->name('logout');
        });
 
 });

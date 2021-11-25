@@ -46,9 +46,9 @@ class DoctorController extends Controller
         $creds = $request->only('email','password');
 
         if( Auth::guard('doctor')->attempt($creds) ){
-            return redirect()->route('doctor.home');
+            return redirect()->route('pegawai.home');
         }else{
-            return redirect()->route('doctor.login')->with('fail','Incorrect Credentials');
+            return redirect()->route('pegawai.login')->with('fail','Incorrect Credentials');
         }
     }
 

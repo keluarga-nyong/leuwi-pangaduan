@@ -11,7 +11,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 offset-md-4" style="margin-top: 45px">
-                 <h4>Pegawai Login</h4><hr>
+                 <h4 class="text-center">Pegawai Login</h4><hr>
                  <form action="{{ route('pegawai.check') }}" method="post">
                     @if (Session::get('fail'))
                         <div class="alert alert-danger">
@@ -29,7 +29,7 @@
                          <input type="password" class="form-control" name="password" placeholder="Enter password" value="{{ old('password') }}">
                          <span class="text-danger">@error('password') {{ $message }} @enderror</span>
                      </div>
-                     <div class="form-group">
+                     <div class="form-group text-center">
                          <button type="submit" class="btn btn-primary">Login</button>
                      </div>
                      <br>
