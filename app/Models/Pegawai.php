@@ -45,4 +45,9 @@ class Pegawai extends Model implements AuthenticatableContract
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    public function presents()
+    {
+        return $this->hasMany('App\Present');
+    }
 }

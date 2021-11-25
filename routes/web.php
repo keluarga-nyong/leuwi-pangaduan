@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\PenginapanController;
 use App\Http\Controllers\Admin\Pemesanan_penginapanController;
 use App\Http\Controllers\Admin\Pemesanan_tiketController;
 use App\Http\Controllers\Pegawai\PegawaiController;
+use App\Http\Controllers\Pegawai\PresentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,8 @@ use App\Http\Controllers\Pegawai\PegawaiController;
 Route::get('/', function () {
     return view('user.home');
 });
-
+Route::view('/price','user.price')->name('price');
+Route::view('/event','user.event')->name('event');
 Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -44,9 +46,6 @@ Route::prefix('user')->name('user.')->group(function(){
 
     Route::middleware(['auth:web','PreventBackHistory'])->group(function(){
           Route::view('/home','user.home')->name('home');
-          Route::view('/price','user.price')->name('price');
-          Route::view('/event','user.event')->name('event');
-          
           Route::get('/booking', [BookingController::class,'index']);
           Route::get('/booking/pesan', [BookingController::class, 'pesan'])->name('booking.pesan');
           Route::post('/booking/konfirmasi', [BookingController::class, 'konfirmasi'])->name('booking.konfirmasi');
@@ -98,7 +97,14 @@ Route::prefix('pegawai')->name('pegawai.')->group(function(){
         });
 
        Route::middleware(['auth:pegawai','PreventBackHistory'])->group(function(){
-            Route::view('/home','pegawai.home')->name('home');
+            Route::get('/home', [PegawaiController::class,'index'])->name('home');
+            
+            Route::get('/kehadiran', [PresentsController::class,'index'])->name('kehadiran.index');
+            Route::get('/daftar-hadir', [PresentsController::class,'show'])->name('daftar-hadir');
+            Route::get('/daftar-hadir/cari', [PresentsController::class,'cariDaftarHadir'])->name('daftar-hadir.cari');
+            Route::patch('/absen/{kehadiran}', [PresentsController::class,'checkOut'])->name('kehadiran.check-out');
+            Route::post('/absen', [PresentsController::class,'checkIn'])->name('kehadiran.check-in');
+            
             Route::post('logout',[PegawaiController::class,'logout'])->name('logout');
        });
 

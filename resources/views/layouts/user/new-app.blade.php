@@ -73,7 +73,7 @@
                                     <li><a href="/galeri">Galeri</a></li>
                                     <li><a href="/price">Price</a></li>
                                     <li><a href="/event">Event</a></li>
-                                    
+                                    <li><a href="/pegawai/login">Pegawai</a></li>
                                 </ul>
                             </div>
                             <div class="col-xs-6">
