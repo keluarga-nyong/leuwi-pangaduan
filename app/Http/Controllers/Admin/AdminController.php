@@ -57,4 +57,14 @@ class AdminController extends Controller
         return view('admin.welcome',['totalpengunjung'=> $totalpengunjung,'hsl_tiket'=>$hsl_tiket,'hsl_villa'=>$hsl_villa]);
         // dd($hsl_tiket);
     }
+    public function edit($id){
+       $pegawai=\App\Models\pegawai::find($id);
+        return view('admin/pegawai/edit',['pegawai' => $pegawai]);
+        //   dd($pegawai);
+    }
+    public function update (Request $request,$id){
+        $pegawai=\App\Models\pegawai::find($id);
+        $pegawai->update($request->all());
+        return redirect('/admin/pegawai');
+    }
 }

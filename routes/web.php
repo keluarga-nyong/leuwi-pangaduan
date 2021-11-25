@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\PenginapanController;
 use App\Http\Controllers\Admin\Pemesanan_penginapanController;
 use App\Http\Controllers\Admin\Pemesanan_tiketController;
 use App\Http\Controllers\Doctor\DoctorController;
+use App\Http\Controllers\Admin\KontenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,14 +72,21 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::middleware(['auth:admin','PreventBackHistory'])->group(function(){
         Route::get('/home',[AdminController::class,'dashboard'])->name('home');
         // Route::post('/check',[UserController::class,'check'])->name('check');
+        //Konten
+        Route::get('/konten', [KontenController::class,'index']);
+        Route::post('/konten/create', [KontenController::class,'create'])->name('konten.create');
         //pelanggan
         Route::get('/pelanggan', [PelangganController::class,'index']);
         //penginapan
         Route::get('/penginapan', [PenginapanController::class,'index']);
         Route::POST('/penginapan/create',[PenginapanController::class,'create'])->name('penginapan.create');
+        Route::get('/penginapan/{id}/edit',[PenginapanController::class,'edit']);
+        Route::post('/penginapan/{id}/update',[PenginapanController::class,'update']);
         //pegawai
         Route::get('/pegawai', [AdminController::class,'index']);
         Route::post('/pegawai/create', [AdminController::class,'create'])->name('pegawai.create');
+        Route::get('/pegawai/{id}/edit',[AdminController::class,'edit']);
+        Route::post('/pegawai/{id}/update',[AdminController::class,'update']);
         //pemesanan penginapan
         Route::get('/pemesanan_penginapan', 'App\Http\Controllers\Admin\Pemesanan_penginapanController@index');
         //pemesanan tiket

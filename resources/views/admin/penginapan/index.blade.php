@@ -25,6 +25,7 @@
                                                 <td>Nama</td>
                                                 <td>Detail</td>
                                                 <td>Harga</td>
+                                                <td>action</td>
                                                 
 											</tr>
 										</thead>
@@ -34,6 +35,9 @@
                                                 <td>{{$penginapan->nama_villa}}</td>
                                                 <td>{{$penginapan->detail}}</td>
                                                 <td>{{$penginapan->harga}}</td>
+                                                <td><a href="penginapan/{{$penginapan->id}}/edit" class="btn btn_warning btn-sm">
+                                                    edit
+                                                    </a></td>
                                             </tr>
                                          @endforeach
 										</tbody>

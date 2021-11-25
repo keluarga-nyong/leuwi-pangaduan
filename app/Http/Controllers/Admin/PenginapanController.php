@@ -17,4 +17,14 @@ class PenginapanController extends Controller
         \App\Models\Penginapan::create($request->all());
         return redirect ("/admin/penginapan");
     }
+    public function edit($id){
+        $penginapan=\App\Models\penginapan::find($id);
+         return view('admin/penginapan/edit',['penginapan' => $penginapan]);
+         //   dd($penginapan);
+     }
+     public function update (Request $request,$id){
+         $penginapan=\App\Models\penginapan::find($id);
+         $penginapan->update($request->all());
+         return redirect('/admin/penginapan');
+     }
 }

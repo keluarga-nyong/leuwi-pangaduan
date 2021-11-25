@@ -8,11 +8,11 @@
 							<!-- TABLE HOVER -->
 							<div class="panel">
 								<div class="panel-heading">
-									<h3 class="panel-title">Data pegawai</h3>
+									<h3 class="panel-title">Data Konten</h3>
                                     <!-- Button trigger modal -->
                                     <div class="right">
                                         <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                        Tambah User
+                                        Tambah Konten
                                         </a>
                                     </div>
 								</div>
@@ -22,25 +22,21 @@
 									<table class="table table-hover">
 										<thead>
 											<tr>
-                                                <td>Nama</td>
-                                                <td>jenis Kelamin</td>
-                                                <td>telpon</td>
-                                                <td>email</td>
-                                                <td>jabatan</td>
-                                                <td>alamat</td>
+                                                <td>Judul</td>
+                                                <td>Isi</td>
+                                                <td>Gambar</td>
+                                                <td>Kategori</td>
                                                 <td>aksi</td>
 											</tr>
 										</thead>
 										<tbody>
-                                        @foreach($data_pegawai as $pegawai )
+                                        @foreach($data_konten as $konten )
                                             <tr>
-                                            <td>{{$pegawai->nama}}</td>
-                                            <td>{{$pegawai->jenis_kelamin}}</td>
-                                            <td>{{$pegawai->phone}}</td>
-                                            <td>{{$pegawai->email}}</td>
-                                            <td>{{$pegawai->jabatan}}</td>
-                                            <td>{{$pegawai->alamat}}</td>
-                                            <td><a href="pegawai/{{$pegawai->id}}/edit" class="btn btn_warning btn-sm">
+                                            <td>{{$konten->judul}}</td>
+                                            <td>{{$konten->isi}}</td>
+                                            <td>{{$konten->gambar}}</td>
+                                            <td>{{$konten->tag}}</td>
+                                            <td><a href="konten/{{$konten->id}}/edit" class="btn btn_warning btn-sm">
                                                 edit
                                                 </a></td>
                                         </tr>
@@ -65,48 +61,29 @@
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Tambah Data Pegawai</h5>
+                                                        <h5 class="modal-title" id="exampleModalLabel">Tambah Data Konten</h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form action="{{ route('admin.pegawai.create') }}" method="post">
+                                                        <form action="{{ route('admin.konten.create') }}" method="post" enctype="multipart/form-data">
                                                             @csrf
                                                             <div class="mb-3">
-                                                                <label for="exampleInputEmail1" class="form-label">Nama </label>
-                                                                <input name="nama" type="text" class="form-control" placeholder="masukan nama pegawai" id="nama" aria-describedby="emailHelp">
+                                                                <label for="exampleInputEmail1" class="form-label">Judul </label>
+                                                                <input name="judul" type="text" class="form-control" placeholder="masukan Judul" id="nama" aria-describedby="emailHelp">
                                                                 
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="exampleInputEmail1" class="form-label">Jenis Kelamin </label><br>
-                                                                <select name="jenis_kelamin" class="form-select" aria-label="Default select example">
-                                                                    <option selected>Jenis Kelamin</option>
-                                                                    <option value="Laki-Laki">Laki-Laki</option>
-                                                                    <option value="Perempuan">Perempuan</option>
-                                                                </select>
-                                                            
-                                                            </div><div class="mb-3">
-                                                                <label for="exampleInputEmail1" class="form-label">telp</label>
-                                                                <input name="phone" type="number" placeholder="masukan no tlp"class="form-control" id="telp" aria-describedby="emailHelp">
-                                                                
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="exampleInputEmail1" class="form-label">email</label>
-                                                                <input name="email" type="email" class="form-control" placeholder="masukan email" id="email" aria-describedby="emailHelp">
-                                                    
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="exampleInputEmail1" class="form-label">Jabatan</label>
-                                                                <input name="jabatan"type="text" class="form-control" placeholder="masukan Jabatan" id="Jabatan" aria-describedby="textHelp">
-                                                            </div>
-                                                            
+                                                            </div>                                                                                                                    
                                                             <div class="form-floating">
-                                                                <label for="floatingTextarea">alamat</label>
-                                                                <textarea name="alamat" class="form-control" placeholder="masukan alamat" id="alamat"></textarea>
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="exampleInputPassword1" class="form-label">Password</label>
-                                                                <input name="password" type="password" class="form-control" id="password">
+                                                                <label for="floatingTextarea">isi</label>
+                                                                <textarea name="isi" class="form-control" placeholder="masukan alamat" id="alamat"></textarea>
                                                             </div>  
+                                                            <div class="mb-3">
+                                                                <label for="exampleInputEmail1" class="form-label">Kategoori </label>
+                                                                <input name="tag" type="text" class="form-control" placeholder="masukan Kategori" id="nama" aria-describedby="emailHelp">                                                                
+                                                            </div>  
+                                                            <div class="form-floating">
+                                                                <label for="floatingTextarea">Gambar</label>
+                                                                <input type="file" name="gambar" id="gambar" class="form-control">
+                                                            </div>                                                        
                                                         </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -124,7 +101,7 @@
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form action="{{ route('admin.pegawai.create') }}" method="post">
+                                                        <form action="{{ route('admin.konten.create') }}" method="post">
                                                             @csrf
                                                             <div class="mb-3">
                                                                 <label for="exampleInputEmail1" class="form-label">Nama </label>
@@ -147,7 +124,6 @@
                                                             <div class="mb-3">
                                                                 <label for="exampleInputEmail1" class="form-label">email</label>
                                                                 <input name="email" type="email" class="form-control" placeholder="masukan email" id="email" aria-describedby="emailHelp">
-                                                    
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="exampleInputEmail1" class="form-label">Jabatan</label>
