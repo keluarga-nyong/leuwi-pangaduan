@@ -10,8 +10,9 @@ use App\Http\Controllers\Admin\PelangganController;
 use App\Http\Controllers\Admin\PenginapanController;
 use App\Http\Controllers\Admin\Pemesanan_penginapanController;
 use App\Http\Controllers\Admin\Pemesanan_tiketController;
-use App\Http\Controllers\Doctor\DoctorController;
 use App\Http\Controllers\Admin\KontenController;
+use App\Http\Controllers\Pegawai\PegawaiController;
+use App\Http\Controllers\Pegawai\PresentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +28,8 @@ use App\Http\Controllers\Admin\KontenController;
 Route::get('/', function () {
     return view('user.home');
 });
-
+Route::view('/price','user.price')->name('price');
+Route::view('/event','user.event')->name('event');
 Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -45,9 +47,6 @@ Route::prefix('user')->name('user.')->group(function(){
 
     Route::middleware(['auth:web','PreventBackHistory'])->group(function(){
           Route::view('/home','user.home')->name('home');
-          Route::view('/price','user.price')->name('price');
-          Route::view('/event','user.event')->name('event');
-          
           Route::get('/booking', [BookingController::class,'index']);
           Route::get('/booking/pesan', [BookingController::class, 'pesan'])->name('booking.pesan');
           Route::post('/booking/konfirmasi', [BookingController::class, 'konfirmasi'])->name('booking.konfirmasi');
@@ -96,18 +95,25 @@ Route::prefix('admin')->name('admin.')->group(function(){
 
 });
 
-Route::prefix('doctor')->name('doctor.')->group(function(){
+Route::prefix('pegawai')->name('pegawai.')->group(function(){
 
-       Route::middleware(['guest:doctor','PreventBackHistory'])->group(function(){
-            Route::view('/login','dashboard.doctor.login')->name('login');
-            Route::view('/register','dashboard.doctor.register')->name('register');
-            Route::post('/create',[DoctorController::class,'create'])->name('create');
-            Route::post('/check',[DoctorController::class,'check'])->name('check');
-       });
+       Route::middleware(['guest:pegawai','PreventBackHistory'])->group(function(){
+           Route::view('/login','pegawai.login')->name('login');
+           Route::post('/check',[PegawaiController::class,'check'])->name('check');
+            // Route::view('/register','pegawai.register')->name('register');
+            // Route::post('/create',[PegawaiController::class,'create'])->name('create');
+        });
 
-       Route::middleware(['auth:doctor','PreventBackHistory'])->group(function(){
-            Route::view('/home','dashboard.doctor.home')->name('home');
-            Route::post('logout',[DoctorController::class,'logout'])->name('logout');
+       Route::middleware(['auth:pegawai','PreventBackHistory'])->group(function(){
+            Route::get('/home', [PegawaiController::class,'index'])->name('home');
+            
+            Route::get('/kehadiran', [PresentsController::class,'index'])->name('kehadiran.index');
+            Route::get('/daftar-hadir', [PresentsController::class,'show'])->name('daftar-hadir');
+            Route::get('/daftar-hadir/cari', [PresentsController::class,'cariDaftarHadir'])->name('daftar-hadir.cari');
+            Route::patch('/absen/{kehadiran}', [PresentsController::class,'checkOut'])->name('kehadiran.check-out');
+            Route::post('/absen', [PresentsController::class,'checkIn'])->name('kehadiran.check-in');
+            
+            Route::post('logout',[PegawaiController::class,'logout'])->name('logout');
        });
 
 });

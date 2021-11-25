@@ -21,9 +21,9 @@ return [
        'driver'=>'eloquent',
        'model'=>App\Models\Admin::class,
     ],
-    'doctor'=>[
+    'pegawai'=>[
         'driver'=>'eloquent',
-        'model'=>App\Models\Doctor::class,
+        'model'=>App\Models\Pegawai::class,
      ],
 
     /*
@@ -58,9 +58,9 @@ return [
            'driver'=>'session',
            'provider'=>'admins',
         ],
-        'doctor'=>[
+        'pegawai'=>[
             'driver'=>'session',
-            'provider'=>'doctors',
+            'provider'=>'pegawais',
          ],
     ],
 
@@ -95,9 +95,9 @@ return [
            'driver'=>'eloquent',
            'model'=>App\Models\Admin::class,
         ],
-        'doctors'=>[
+        'pegawais'=>[
             'driver'=>'eloquent',
-            'model'=>App\Models\Doctor::class,
+            'model'=>App\Models\Pegawai::class,
          ],
     ],
 
@@ -127,9 +127,9 @@ return [
             'driver'=>'eloquent',
             'model'=>App\Models\Admin::class,
         ],
-        'doctors'=>[
+        'pegawais'=>[
             'driver'=>'eloquent',
-            'model'=>App\Models\Doctor::class,
+            'model'=>App\Models\Pegawai::class,
         ]
     ],
 

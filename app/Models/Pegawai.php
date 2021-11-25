@@ -5,12 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Auth\Authenticatable;
 
-class Pegawai extends Model
+class Pegawai extends Model implements AuthenticatableContract
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
+    use Authenticatable;
         /**
      * The attributes that are mass assignable.
      *
@@ -25,9 +27,6 @@ class Pegawai extends Model
         'email',
         'password',
     ];
-    public function setPasswordAttribute($password){
-        $this->attributes['password'] = bcrypt($password);
-    }
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -46,4 +45,9 @@ class Pegawai extends Model
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    public function presents()
+    {
+        return $this->hasMany('App\Present');
+    }
 }
