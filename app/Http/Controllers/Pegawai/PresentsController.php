@@ -25,7 +25,7 @@ class PresentsController extends Controller
         $cuti = Present::whereTanggal(date('Y-m-d'))->whereKeterangan('cuti')->count();
         $alpha = Present::whereTanggal(date('Y-m-d'))->whereKeterangan('alpha')->count();
         $rank = $presents->firstItem();
-        return view('presents.index', compact('presents','rank','masuk','telat','cuti','alpha'));
+        return view('admin.pegawai.absensi', compact('presents','rank','masuk','telat','cuti','alpha'));
     }
 
     public function search(Request $request)
@@ -39,21 +39,21 @@ class PresentsController extends Controller
         $cuti = Present::whereTanggal($request->tanggal)->whereKeterangan('cuti')->count();
         $alpha = Present::whereTanggal($request->tanggal)->whereKeterangan('alpha')->count();
         $rank = $presents->firstItem();
-        return view('presents.index', compact('presents','rank','masuk','telat','cuti','alpha'));
+        return view('admin.pegawai.absensi', compact('presents','rank','masuk','telat','cuti','alpha'));
     }
 
-    public function cari(Request $request, User $user)
+    public function cari(Request $request, Pegawai $pegawai)
     {
         $request->validate([
             'bulan' => ['required']
         ]);
         $data = explode('-',$request->bulan);
-        $presents = Present::whereUserId($user->id)->whereMonth('tanggal',$data[1])->whereYear('tanggal',$data[0])->orderBy('tanggal','desc')->paginate(5);
-        $masuk = Present::whereUserId($user->id)->whereMonth('tanggal',$data[1])->whereYear('tanggal',$data[0])->whereKeterangan('masuk')->count();
-        $telat = Present::whereUserId($user->id)->whereMonth('tanggal',$data[1])->whereYear('tanggal',$data[0])->whereKeterangan('telat')->count();
-        $cuti = Present::whereUserId($user->id)->whereMonth('tanggal',$data[1])->whereYear('tanggal',$data[0])->whereKeterangan('cuti')->count();
-        $alpha = Present::whereUserId($user->id)->whereMonth('tanggal',$data[1])->whereYear('tanggal',$data[0])->whereKeterangan('alpha')->count();
-        $kehadiran = Present::whereUserId($user->id)->whereMonth('tanggal',$data[1])->whereYear('tanggal',$data[0])->whereKeterangan('telat')->get();
+        $presents = Present::whereUserId($pegawai->id)->whereMonth('tanggal',$data[1])->whereYear('tanggal',$data[0])->orderBy('tanggal','desc')->paginate(5);
+        $masuk = Present::whereUserId($pegawai->id)->whereMonth('tanggal',$data[1])->whereYear('tanggal',$data[0])->whereKeterangan('masuk')->count();
+        $telat = Present::whereUserId($pegawai->id)->whereMonth('tanggal',$data[1])->whereYear('tanggal',$data[0])->whereKeterangan('telat')->count();
+        $cuti = Present::whereUserId($pegawai->id)->whereMonth('tanggal',$data[1])->whereYear('tanggal',$data[0])->whereKeterangan('cuti')->count();
+        $alpha = Present::whereUserId($pegawai->id)->whereMonth('tanggal',$data[1])->whereYear('tanggal',$data[0])->whereKeterangan('alpha')->count();
+        $kehadiran = Present::whereUserId($pegawai->id)->whereMonth('tanggal',$data[1])->whereYear('tanggal',$data[0])->whereKeterangan('telat')->get();
         $totalJamTelat = 0;
         foreach ($kehadiran as $present) {
             $totalJamTelat = $totalJamTelat + (\Carbon\Carbon::parse($present->jam_masuk)->diffInHours(\Carbon\Carbon::parse('07:00:00')));
@@ -74,7 +74,7 @@ class PresentsController extends Controller
                 }
             }
         }
-        return view('users.show', compact('presents','user','masuk','telat','cuti','alpha','libur','totalJamTelat'));
+        return view('admin.kehadiran.cari', compact('presents','user','masuk','telat','cuti','alpha','libur','totalJamTelat'));
     }
 
     public function cariDaftarHadir(Request $request)
@@ -93,27 +93,27 @@ class PresentsController extends Controller
 
     public function checkIn(Request $request)
     {
-        $users = Pegawai::all();
+        $pegawais = Pegawai::all();
         $alpha = false;
 
         if (date('l') == 'Saturday' || date('l') == 'Sunday') {
             return redirect()->back()->with('error','Hari Libur Tidak bisa Check In');
         }
 
-        foreach ($users as $user) {
-            $absen = Present::whereUserId($user->id)->whereTanggal(date('Y-m-d'))->first();
+        foreach ($pegawais as $pegawai) {
+            $absen = Present::whereUserId($pegawai->id)->whereTanggal(date('Y-m-d'))->first();
             if (!$absen) {
                 $alpha = true;
             }
         }
 
         if ($alpha) {
-            foreach ($users as $user) {
-                if ($user->id != $request->user_id) {
+            foreach ($pegawais as $pegawai) {
+                if ($pegawai->id != $request->user_id) {
                     Present::create([
                         'keterangan'    => 'Alpha',
                         'tanggal'       => date('Y-m-d'),
-                        'user_id'       => $user->id
+                        'user_id'       => $pegawai->id
                     ]);
                 }
             }
@@ -203,15 +203,6 @@ class PresentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show()
-    {
-        $presents = Present::whereUserId(auth()->user()->id)->whereMonth('tanggal',date('m'))->whereYear('tanggal',date('Y'))->orderBy('tanggal','desc')->paginate(6);
-        $masuk = Present::whereUserId(auth()->user()->id)->whereMonth('tanggal',date('m'))->whereYear('tanggal',date('Y'))->whereKeterangan('masuk')->count();
-        $telat = Present::whereUserId(auth()->user()->id)->whereMonth('tanggal',date('m'))->whereYear('tanggal',date('Y'))->whereKeterangan('telat')->count();
-        $cuti = Present::whereUserId(auth()->user()->id)->whereMonth('tanggal',date('m'))->whereYear('tanggal',date('Y'))->whereKeterangan('cuti')->count();
-        $alpha = Present::whereUserId(auth()->user()->id)->whereMonth('tanggal',date('m'))->whereYear('tanggal',date('Y'))->whereKeterangan('alpha')->count();
-        return view('pegawai.show', compact('presents','masuk','telat','cuti','alpha'));
-    }
 
     /**
      * Update the specified resource in storage.
@@ -245,11 +236,6 @@ class PresentsController extends Controller
         }
         $kehadiran->update($data);
         return redirect()->back()->with('success', 'Kehadiran tanggal "'.date('l, d F Y',strtotime($kehadiran->tanggal)).'" berhasil diubah');
-    }
-
-    public function excelUser(Request $request, User $user)
-    {
-        return Excel::download(new PresentExport($user->id, $request->bulan), 'kehadiran-'.$user->nrp.'-'.$request->bulan.'.xlsx');
     }
 
     public function excelUsers(Request $request)

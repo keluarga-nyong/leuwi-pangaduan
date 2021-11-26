@@ -70,11 +70,12 @@
                 <div class="testimonial slick-carousel">
                     <div class="testimonial-container">
                         <div class="testimonial-body">
-                            <p>Credibly extend parallel relationships after clicks-and-mortar content. Credibly pontificate team building alignments rather than diverse quality vectors.</p>
                             <div class="testimonial-author">
                                 <img src="{{ asset('user/assets/img/user2.png') }}" alt="Author" class="pull-left">
                                 <span><span class="author-name">Antonius</span> <em>CEO of TheCompany</em></span>
-                            </div>
+                            </div><br>
+                            <p>Credibly extend parallel relationships after clicks-and-mortar content. Credibly pontificate team building alignments rather than diverse quality vectors.</p>
+
                         </div>
                         <div class="testimonial-body">
                             <p>Credibly pontificate team building alignments rather than diverse quality vectors. Monotonectally benchmark business communities for distinctive mindshare.</p>

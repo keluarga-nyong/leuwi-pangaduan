@@ -1276,7 +1276,7 @@ div[class*="col-"] > .form-group {
 
 .testimonial-with-bg {
   padding: 120px 0;
-  background-image: url('../img/testimonial-bg.png?1424866387');
+  background-image: url('../img/home/banner.PNG');
   background-attachment: fixed;
   background-position: center center;
   color: #fff;
@@ -1288,6 +1288,9 @@ div[class*="col-"] > .form-group {
 }
 .testimonial-with-bg .testimonial {
   margin-bottom: 0;
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255, 0.45);
+  padding: 25px;
 }
 .testimonial-with-bg .testimonial.slick-carousel .slick-next, .testimonial-with-bg .testimonial.slick-carousel .slick-prev {
   background-color: transparent;

@@ -30,4 +30,15 @@ class KontenController extends Controller
         return redirect ("/admin/konten");
         // dd($request->all());
     }
+
+    public function event(){
+        $konten = Konten::all()->where('tag','event');
+        return view('user.event',['konten' => $konten,]);
+        // dd($konten);
+    }
+
+    public function showEvent($id){
+        $konten = Konten::find($id);
+        return view('user/show',['konten' => $konten]);
+    }
 }

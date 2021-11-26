@@ -5,6 +5,7 @@
                 <li><a href="/admin/home" class="active"><i class="fa fa-line-chart"></i> <span>Dashboard</span></a></li>
                 <li><a href="/admin/konten" class=""><i class="lnr lnr-upload"></i> <span>Data Konten</span></a></li>
                 <li><a href="/admin/pegawai" class=""><i class="lnr lnr-user"></i> <span>Data pegawai</span></a></li>
+                <li><a href="/admin/kehadiran" class=""><i class="lnr lnr-calendar-full"></i> <span>Data Kehadiran</span></a></li>
                 <li><a href="/admin/pelanggan" class=""><i class="lnr lnr-chart-bars"></i> <span>Data pelanggan</span></a></li>
                 <li><a href="/admin/penginapan" class=""><i class="lnr lnr-home"></i> <span>Data penginapan</span></a></li>
                 <li>

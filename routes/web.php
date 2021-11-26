@@ -28,8 +28,11 @@ use App\Http\Controllers\Pegawai\PresentsController;
 Route::get('/', function () {
     return view('user.home');
 });
+
+Route::view('/home','user.home')->name('home');
 Route::view('/price','user.price')->name('price');
-Route::view('/event','user.event')->name('event');
+Route::get('/event',[KontenController::class,'event'])->name('event');
+Route::get('/event/{id}/show',[KontenController::class,'showEvent']);
 Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -38,7 +41,8 @@ Route::prefix('user')->name('user.')->group(function(){
   
     Route::middleware(['guest:web','PreventBackHistory'])->group(function(){
           Route::view('/price','user.price')->name('price');
-          Route::view('/event','user.event')->name('event');
+          Route::get('/event',[KontenController::class,'event'])->name('event');
+          Route::get('/event/{id}/show',[KontenController::class,'showEvent']);
           Route::view('/login','user.login')->name('login');
           Route::view('/register','user.register')->name('register');
           Route::post('/create',[UserController::class,'create'])->name('create');
@@ -86,6 +90,12 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::post('/pegawai/create', [AdminController::class,'create'])->name('pegawai.create');
         Route::get('/pegawai/{id}/edit',[AdminController::class,'edit']);
         Route::post('/pegawai/{id}/update',[AdminController::class,'update']);
+        //kehadiran
+        Route::get('/kehadiran', [PresentsController::class,'index'])->name('kehadiran.index');
+        Route::get('/kehadiran/cari', [PresentsController::class,'search'])->name('kehadiran.search');
+        Route::get('/kehadiran/{user}/cari', [PresentsController::class,'cari'])->name('kehadiran.cari');
+        Route::get('/kehadiran/excel-users', [PresentsController::class,'excelUsers'])->name('kehadiran.excel-users');
+        Route::get('/kehadiran/{user}/excel-user', [PresentsController::class,'excelUser'])->name('kehadiran.excel-user');
         //pemesanan penginapan
         Route::get('/pemesanan_penginapan', 'App\Http\Controllers\Admin\Pemesanan_penginapanController@index');
         //pemesanan tiket
@@ -100,15 +110,12 @@ Route::prefix('pegawai')->name('pegawai.')->group(function(){
        Route::middleware(['guest:pegawai','PreventBackHistory'])->group(function(){
            Route::view('/login','pegawai.login')->name('login');
            Route::post('/check',[PegawaiController::class,'check'])->name('check');
-            // Route::view('/register','pegawai.register')->name('register');
-            // Route::post('/create',[PegawaiController::class,'create'])->name('create');
         });
 
        Route::middleware(['auth:pegawai','PreventBackHistory'])->group(function(){
             Route::get('/home', [PegawaiController::class,'index'])->name('home');
             
             Route::get('/kehadiran', [PresentsController::class,'index'])->name('kehadiran.index');
-            Route::get('/daftar-hadir', [PresentsController::class,'show'])->name('daftar-hadir');
             Route::get('/daftar-hadir/cari', [PresentsController::class,'cariDaftarHadir'])->name('daftar-hadir.cari');
             Route::patch('/absen/{kehadiran}', [PresentsController::class,'checkOut'])->name('kehadiran.check-out');
             Route::post('/absen', [PresentsController::class,'checkIn'])->name('kehadiran.check-in');

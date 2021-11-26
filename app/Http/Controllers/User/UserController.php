@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\User;
+use App\Models\Konten;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Str;
 class UserController extends Controller
 {
+
     function create(Request $request){
           //Validate Inputs
           $request->validate([

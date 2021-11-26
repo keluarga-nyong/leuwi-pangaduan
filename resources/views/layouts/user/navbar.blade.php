@@ -23,7 +23,7 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('user.home') }}">HOME</a>
+                            <a class="nav-link" href="{{ route('home') }}">HOME</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('user.price') }}">PRICE</a>
