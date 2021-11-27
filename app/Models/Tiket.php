@@ -10,7 +10,7 @@ class Tiket extends Model
     use HasFactory;
     protected $table = "tikets";
     protected $primaryKey = "id";
-    protected $fillable = ['id', 'id_user','tanggal','dewasa','anak','total_harga','status'];
+    protected $fillable = ['id', 'id_user','id_pembayaran','tanggal','dewasa','anak','total_harga','status'];
 
     public function user(){
         return $this->belongsTo(User::class, 'id_user');

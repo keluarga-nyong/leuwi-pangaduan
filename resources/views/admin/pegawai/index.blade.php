@@ -83,11 +83,10 @@
                                                                     <option value="Laki-Laki">Laki-Laki</option>
                                                                     <option value="Perempuan">Perempuan</option>
                                                                 </select>
-                                                            
-                                                            </div><div class="mb-3">
+                                                            </div>
+                                                            <div class="mb-3">
                                                                 <label for="exampleInputEmail1" class="form-label">telp</label>
                                                                 <input name="phone" type="number" placeholder="masukan no tlp"class="form-control" id="telp" aria-describedby="emailHelp">
-                                                                
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="exampleInputEmail1" class="form-label">email</label>

@@ -26,10 +26,10 @@
                             <a class="nav-link" href="{{ route('home') }}">HOME</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('user.price') }}">PRICE</a>
+                            <a class="nav-link" href="{{ route('price') }}">PRICE</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('user.event') }}">EVENT</a>
+                            <a class="nav-link" href="{{ route('event') }}">EVENT</a>
                         </li>
                         
                         @guest

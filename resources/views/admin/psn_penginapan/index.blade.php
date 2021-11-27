@@ -17,22 +17,35 @@
 									<table class="table table-hover">
 										<thead>
 											<tr>
+                                                <td>Kode Booking</td>
                                                 <td>Nama Pelanggan</td>
                                                 <td>Nama Villa</td>
                                                 <td>Check In</td>
                                                 <td>Check Out</td>
                                                 <td>Total Harga</td>
-                                                
+                                                <td>Status</td>
+                                                <td>Aksi</td>
 											</tr>
 										</thead>
 										<tbody>
                                         @foreach($data_pemesanan_penginapan as $psn_penginapan )
                                             <tr>
+                                                <td>{{$psn_penginapan->id_pembayaran}}</td>
                                                 <td>{{$psn_penginapan->user->name}}</td>
                                                 <td>{{$psn_penginapan->villa->nama_villa}}</td>
                                                 <td>{{$psn_penginapan->checkin}}</td>
                                                 <td>{{$psn_penginapan->checkout}}</td>
                                                 <td>{{$psn_penginapan->total_harga}}</td>
+                                                <td>
+                                                    @if($psn_penginapan->status == 0)
+                                                    <span class="status-no">Belum Bayar</span> 
+                                                    @else
+                                                    <span class="status-ok">Sudah Bayar</span> 
+                                                    @endif
+                                                </td>
+                                                <td><a href="pemesanan_penginapan/{{$psn_penginapan->id}}/edit" class="btn btn_warning btn-sm">
+                                                edit
+                                                </a></td>
                                             </tr>
                                          @endforeach
 										</tbody>

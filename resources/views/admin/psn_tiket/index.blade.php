@@ -17,21 +17,35 @@
 									<table class="table table-hover">
 										<thead>
 											<tr>
+                                                <td>Nomor Tiket</td>
                                                 <td>Nama Pelanggan</td>
-                                                <td>tanggal</td>
-                                                <td>dewasa</td>
-                                                <td>anak</td>
-                                                <td>total harga</td>
+                                                <td>Tanggal</td>
+                                                <td>Dewasa</td>
+                                                <td>Anak</td>
+                                                <td>Total Harga</td>
+                                                <td>Status</td>
+                                                <td>Aksi</td>
 											</tr>
 										</thead>
 										<tbody>
                                         @foreach($psn_tiket as $tiket )
                                             <tr>
+                                                <td>{{$tiket->id_pembayaran}}</td>
                                                 <td>{{$tiket->user->name}}</td>
                                                 <td>{{$tiket->tanggal}}</td>
                                                 <td>{{$tiket->dewasa}}</td>
                                                 <td>{{$tiket->anak}}</td>
                                                 <td>{{$tiket->total_harga}}</td>
+                                                <td>
+                                                    @if($tiket->status == 0)
+                                                    <span class="status-no">Belum Bayar</span> 
+                                                    @else
+                                                    <span class="status-ok">Sudah Bayar</span> 
+                                                    @endif
+                                                </td>
+                                                <td><a href="psntiket/{{$tiket->id}}/edit" class="btn btn_warning btn-sm">
+                                                edit
+                                                </a></td>
                                             </tr>
                                          @endforeach
 										</tbody>

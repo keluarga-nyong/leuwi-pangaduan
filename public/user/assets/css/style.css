@@ -240,20 +240,42 @@
 	outline:none;
   }
 
-  .input-pesan-tanggal	{
+  .input-orang{
 	background-color:none; 
 	border:none; 
-	max-width:100px;
+	max-width:68px;
 	font-size: 16px;
   }
 
-  .input-pesan-tanggal	:focus{
+  .input-orang:focus{
 	background-color:none; 
 	border:none; 
-	max-width:100px;
+	max-width:68px;
 	outline:none;
   }
 
+  .input-pesan-tanggal	{
+	background-color:none; 
+	border:none; 
+	max-width:130px;
+	font-size: 16px;
+  }
+
+  .input-pesan-tanggal:focus{
+	background-color:none; 
+	border:none; 
+	max-width:130px;
+	outline:none;
+  }
+
+  .bold{
+	font-weight: bold;
+  }
+
+  .ml-2{
+	  margin-left: 20px;
+  }
+  
   .justify{
 	text-align: justify;
 	text-justify: inter-word;
@@ -444,3 +466,32 @@
   
 }
 
+.btn-wa{
+	background-color: #4CAF50;
+	border: none;
+	color: white;
+	padding: 10px 22px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+.booking-send {
+	position: relative;
+	max-width: 912px;
+	width: 100%;
+	padding: 20px;
+	margin: auto;
+	background: #fff;
+	border-radius: 6px;
+	-webkit-box-shadow: 0px 5px 10px -5px rgba(0, 0, 0, 0.1);
+	box-shadow: 0px 5px 10px -5px rgba(0, 0, 0, 0.1);
+}
+
+.send-wa{
+	font-size: 16px;
+}

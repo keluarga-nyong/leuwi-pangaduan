@@ -71,25 +71,22 @@
                     <div class="testimonial-container">
                         <div class="testimonial-body">
                             <div class="testimonial-author">
-                                <img src="{{ asset('user/assets/img/user2.png') }}" alt="Author" class="pull-left">
-                                <span><span class="author-name">Antonius</span> <em>CEO of TheCompany</em></span>
+                                <span class="author-name"> <i class="fa fa-user" color="white"></i>&nbsp; Antonius</span>
                             </div><br>
                             <p>Credibly extend parallel relationships after clicks-and-mortar content. Credibly pontificate team building alignments rather than diverse quality vectors.</p>
 
                         </div>
                         <div class="testimonial-body">
-                            <p>Credibly pontificate team building alignments rather than diverse quality vectors. Monotonectally benchmark business communities for distinctive mindshare.</p>
                             <div class="testimonial-author">
-                                <img src="{{ asset('user/assets/img/user1.png') }}" alt="Author" class="pull-left">
-                                <span><span class="author-name">Michael</span> <em>General Manager of DreamCorp</em></span>
-                            </div>
+                                <span class="author-name"> <i class="fa fa-user" color="white"></i>&nbsp;Michael</span>
+                            </div><br>
+                            <p>Credibly pontificate team building alignments rather than diverse quality vectors. Monotonectally benchmark business communities for distinctive mindshare.</p>
                         </div>
                         <div class="testimonial-body">
-                            <p>Appropriately morph low-risk high-yield process improvements through progressive partnerships. Uniquely brand enabled. Globally network timely imperatives without plug-and-play schemas.</p>
                             <div class="testimonial-author">
-                                <img src="{{ asset('user/assets/img/user5.png') }}" alt="Author" class="pull-left">
-                                <span><span class="author-name">Palmer</span> <em>Freelance Web Developer</em></span>
-                            </div>
+                                <span class="author-name"> <i class="fa fa-user" color="white"></i>&nbsp;Palmer</span>
+                            </div><br>
+                            <p>Appropriately morph low-risk high-yield process improvements through progressive partnerships. Uniquely brand enabled. Globally network timely imperatives without plug-and-play schemas.</p>
                         </div>
                     </div>
                 </div>

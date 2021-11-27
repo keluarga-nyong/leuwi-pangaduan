@@ -11,18 +11,21 @@
 									<h3 class="panel-title">Kehadiran</h3>
                                     <!-- Button trigger modal -->
                                     <div class="right">
-                                        <form class="float-right" action="{{ route('admin.kehadiran.excel-users') }}" method="get">
+                                        <form class="float-right btn-download" action="{{ route('admin.kehadiran.excel-users') }}" method="get">
                                             <input type="hidden" name="tanggal" value="{{ request('tanggal', date('Y-m-d')) }}">
-                                            <button class="btn btn-sm btn-primary" type="submit" title="Download"><i class="lnr-download"></i></button>
+                                            <button class="btn btn-down" type="submit" title="Download">&nbsp;<i class="fa fa-download fa-3x" aria-hidden="true">&nbsp;</i> </button>
                                         </form>
                                     </div>
+                                    
                                     <div class="col-lg-6 mb-1">
                                         <form action="{{ route('admin.kehadiran.search') }}" method="get">
                                             <div class="form-group row" style="margin-top: 20px;">
                                                 <label for="tanggal" class="col-form-label col-sm-3">Tanggal</label>
                                                 <div class="input-group col-sm-9">
                                                     <input type="date" class="form-control" name="tanggal" id="tanggal" value="{{ request('tanggal', date('Y-m-d')) }}">
+                                                    <span class="input-group-btn btn-cari">
                                                         <button class="btn btn-cari" type="submit">Cari</button>
+                                                    </span>
                                                 </div>
                                             </div>
                                         </form>

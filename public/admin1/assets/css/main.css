@@ -1763,3 +1763,44 @@ ul.activity-timeline > li {
     border: 1px solid #CCC; }
 
 /*# sourceMappingURL=main.css.map */
+
+.status-ok{
+  padding: 5px;
+  background-color: green;
+  color: white;
+  border-radius: 5px;
+}
+
+.status-no{
+  padding: 5px;
+  background-color: red;
+  color: white;
+  border-radius: 5px;
+}
+
+.btn-cari{
+    /* width: 100%;
+    height: 100%; */
+  background-color: royalblue;
+  color: white;
+  padding: 7px;
+  border: none;
+  box-shadow: none;
+}
+
+.btn-cari:hover{
+  /* width: 100%;
+  height: 100%; */
+color: white;
+}
+.btn-download{
+  background: royalblue;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.btn-down{
+  box-shadow: none;
+  color: white;
+  margin-right: 5px;
+}

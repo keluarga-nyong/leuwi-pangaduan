@@ -77,9 +77,14 @@
                                                                 <textarea name="isi" class="form-control" placeholder="masukan alamat" id="alamat"></textarea>
                                                             </div>  
                                                             <div class="mb-3">
-                                                                <label for="exampleInputEmail1" class="form-label">Kategoori </label>
-                                                                <input name="tag" type="text" class="form-control" placeholder="masukan Kategori" id="nama" aria-describedby="emailHelp">                                                                
-                                                            </div>  
+                                                                <label for="kategori" class="form-label">Kategori</label><br>
+                                                                <select name="tag" class="form-select" aria-label="Default select example">
+                                                                    <option selected hidden>- Pilih Kategori -</option>
+                                                                    <option value="event">Event</option>
+                                                                    <option value="fasilitas">Fasilitas</option>
+                                                                    <option value="sejarah">Sejarah</option>
+                                                                </select>
+                                                            </div>
                                                             <div class="form-floating">
                                                                 <label for="floatingTextarea">Gambar</label>
                                                                 <input type="file" name="gambar" id="gambar" class="form-control">

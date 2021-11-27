@@ -22,8 +22,20 @@
 								</div>
 								<div class="col-md-7">
 									<div class="form-group right">
-										<span class="form-label">{{$hari}}, </span>
-										<input class="input-pesan-tanggal" value="{{$tanggal}}" type="text" name="tanggal" id="tanggal" required readonly>
+										<span class="form-label" style="font-weight:bold;">{{$hari}}, </span>
+										<input class="input-pesan-tanggal bold" value="{{$tanggal}}" type="text" name="tanggal" id="tanggal" required readonly>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-5">
+									<div class="form-group">
+										<span class="form-label">no. Tiket</span>
+									</div>
+								</div>
+								<div class="col-md-7">
+									<div class="form-group right">
+										<input class="input-pesan-tanggal bold ml-2" value="{{$nomor}}" type="text" name="id_pembayaran" id="id_pembayaran" required readonly>
 									</div>
 								</div>
 							</div>

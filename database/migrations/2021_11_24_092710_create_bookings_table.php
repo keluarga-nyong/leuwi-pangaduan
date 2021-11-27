@@ -17,6 +17,7 @@ class CreateBookingsTable extends Migration
             $table->id();
             $table->integer('id_user')->unsigned();
             $table->integer('id_villa')->unsigned();
+            $table->string('id_pembayaran',15);
             $table->date('checkin');
             $table->date('checkout');
             $table->string('dewasa')->nullable();

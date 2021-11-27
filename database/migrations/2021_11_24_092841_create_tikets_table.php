@@ -16,6 +16,7 @@ class CreateTiketsTable extends Migration
         Schema::create('tikets', function (Blueprint $table) {
             $table->id();
             $table->integer('id_user')->unsigned();
+            $table->string('id_pembayaran',15);
             $table->date('tanggal');
             $table->string('dewasa')->nullable();
             $table->string('anak')->nullable();

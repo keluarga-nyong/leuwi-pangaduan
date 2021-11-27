@@ -51,6 +51,7 @@ Route::prefix('user')->name('user.')->group(function(){
 
     Route::middleware(['auth:web','PreventBackHistory'])->group(function(){
           Route::view('/home','user.home')->name('home');
+
           Route::get('/booking', [BookingController::class,'index']);
           Route::get('/booking/pesan', [BookingController::class, 'pesan'])->name('booking.pesan');
           Route::post('/booking/konfirmasi', [BookingController::class, 'konfirmasi'])->name('booking.konfirmasi');
@@ -97,9 +98,14 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::get('/kehadiran/excel-users', [PresentsController::class,'excelUsers'])->name('kehadiran.excel-users');
         Route::get('/kehadiran/{user}/excel-user', [PresentsController::class,'excelUser'])->name('kehadiran.excel-user');
         //pemesanan penginapan
-        Route::get('/pemesanan_penginapan', 'App\Http\Controllers\Admin\Pemesanan_penginapanController@index');
+        Route::get('/pemesanan_penginapan', [Pemesanan_penginapanController::class,'index']);
+        Route::get('/pemesanan_penginapan/{id}/edit',[Pemesanan_penginapanController::class,'edit']);
+        Route::post('/pemesanan_penginapan/{id}/update',[Pemesanan_penginapanController::class,'update']);
         //pemesanan tiket
         Route::get('/psntiket', [Pemesanan_tiketController::class,'index']);
+        Route::get('/psntiket/{id}/edit',[Pemesanan_tiketController::class,'edit']);
+        Route::post('/psntiket/{id}/update',[Pemesanan_tiketController::class,'update']);
+
         Route::post('/logout',[AdminController::class,'logout'])->name('logout');
     });
 

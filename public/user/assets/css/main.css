@@ -1253,6 +1253,8 @@ div[class*="col-"] > .form-group {
 }
 .testimonial-author .author-name {
   font-weight: 700;
+  font-size: 18px;
+
 }
 .testimonial-author em {
   display: block;
@@ -1289,7 +1291,7 @@ div[class*="col-"] > .form-group {
 .testimonial-with-bg .testimonial {
   margin-bottom: 0;
   border-radius: 20px;
-  background-color: rgb(255, 255, 255, 0.45);
+  background-color: rgb(0, 0, 0, 0.45);
   padding: 25px;
 }
 .testimonial-with-bg .testimonial.slick-carousel .slick-next, .testimonial-with-bg .testimonial.slick-carousel .slick-prev {
@@ -2191,7 +2193,7 @@ ul.social-icons li a i {
 }
 
 .author-info .author-name {
-  font-size: 18px;
+  font-size: 29px;
 }
 
 /* related post */

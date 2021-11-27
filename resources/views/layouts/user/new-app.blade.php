@@ -52,7 +52,7 @@
                     <div class="col-md-4">
                         <!-- COLUMN 1 -->
                         <h3 class="sr-only">ABOUT US</h3>
-                        <img src="{{ asset('user/assets/img/logo/logo.png') }}" class="logo" alt="Repute">
+                        <img src="{{ asset('user/assets/img/logo/logo.png') }}" class="logo" alt="Repute" style="float:left; margin-right:20px;">
                         <p class="justify">Leuwi Pangaduan merupakan salah satu objek wisata alam terbaru di Bogor tepatnya berada di daerah Bojong Koneng, Babakan Madang. Terletak di tengah hutan yang asri dan teduh, tentunya memiliki suasana yang asri nan meneduhkan.</p>
                         <br>
                         <address class="margin-bottom-30px">
@@ -80,15 +80,15 @@
                                 <ul class="list-unstyled footer-nav">
                                     <li><a href="/">Home</a></li>
                                     @guest
-                                        @if (Route::has('login'))
+                                        @if (Route::has('user.login'))
                                             <li class="nav-item">
-                                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                                <a class="nav-link" href="{{ route('user.login') }}">{{ __('Login') }}</a>
                                             </li>
                                         @endif
 
-                                        @if (Route::has('register'))
+                                        @if (Route::has('user.register'))
                                             <li class="nav-item">
-                                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                                <a class="nav-link" href="{{ route('user.register') }}">{{ __('Register') }}</a>
                                             </li>
                                         @endif
                                     @else
@@ -107,12 +107,12 @@
                     <div class="col-md-4">
                         <!-- COLUMN 3 -->
                         <div class="newsletter">
-                            <h3 class="footer-heading">NEWSLETTER</h3>
-                            <p>Get the latest update from us by subscribing to our newsletter.</p>
-                            <form class="newsletter-form" method="POST">
+                            <h3 class="footer-heading">TESTIMONI</h3>
+                            <p>Berikan pendapat anda tentang wisata Leuwi Pangaduan dari fasilitas maupun kinerja pengurus.</p>
+                            <form class="newsletter-form" action="/user/testi" method="POST">
                                 <div class="input-group input-group-lg">
-                                    <input type="email" class="form-control" name="email" placeholder="youremail@domain.com">
-                                    <span class="input-group-btn"><button class="btn btn-primary" type="button">SUBSCRIBE</button></span>
+                                    <input type="text" class="form-control" name="isi" placeholder="Masukan pendapatmu" style="color:white;">
+                                    <span class="input-group-btn"><button class="btn btn-primary" type="button">KIRIM</button></span>
                                 </div>
                                 <div class="alert"></div>
                             </form>
