@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-use App\Models\Admin;
+use App\Models\Pegawai;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
@@ -42,7 +42,26 @@ class AdminController extends Controller
 
     public function create(Request $request)
     {
-        \App\Models\Pegawai::create($request->all());
+         //Validate Inputs
+         $request->validate([
+            'nama'=>'required',
+            'jenis_kelamin'=>'required',
+            'phone'=>'required',
+            'alamat'=>'required',
+            'jabatan'=>'required',
+            'email'=>'required',
+            'password'=>'required|min:5|max:30',
+        ]);
+
+        $pegawai = new Pegawai();
+        $pegawai->nama = $request->nama;
+        $pegawai->jenis_kelamin = $request->jenis_kelamin;
+        $pegawai->phone = $request->phone;
+        $pegawai->alamat = $request->alamat;
+        $pegawai->jabatan = $request->jabatan;
+        $pegawai->email = $request->email;
+        $pegawai->password = \Hash::make($request->password);
+        $save = $pegawai->save();
         return redirect ("/admin/pegawai");
     }
 
@@ -64,7 +83,25 @@ class AdminController extends Controller
     }
     public function update (Request $request,$id){
         $pegawai=\App\Models\pegawai::find($id);
-        $pegawai->update($request->all());
-        return redirect('/admin/pegawai');
+        $request->validate([
+            'nama'=>'required',
+            'jenis_kelamin'=>'required',
+            'phone'=>'required',
+            'alamat'=>'required',
+            'jabatan'=>'required',
+            'email'=>'required',
+            'password'=>'required|min:5|max:30',
+        ]);
+
+        $pegawai = new Pegawai();
+        $pegawai->nama = $request->nama;
+        $pegawai->jenis_kelamin = $request->jenis_kelamin;
+        $pegawai->phone = $request->phone;
+        $pegawai->alamat = $request->alamat;
+        $pegawai->jabatan = $request->jabatan;
+        $pegawai->email = $request->email;
+        $pegawai->password = \Hash::make($request->password);
+        $save = $pegawai->save();
+        return redirect ("/admin/pegawai");
     }
 }

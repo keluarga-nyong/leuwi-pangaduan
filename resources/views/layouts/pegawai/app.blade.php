@@ -55,7 +55,7 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <li class="nav-item">
                         <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block"
-                            href="{{ route('pegawai.daftar-hadir') }}">Kehadiran
+                            href="{{ route('pegawai.daftar-hadir.cari') }}">Kehadiran
                         </a>
                     </li>
                     &nbsp;&nbsp;

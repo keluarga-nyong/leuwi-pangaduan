@@ -79,6 +79,8 @@ Route::prefix('admin')->name('admin.')->group(function(){
         //Konten
         Route::get('/konten', [KontenController::class,'index']);
         Route::post('/konten/create', [KontenController::class,'create'])->name('konten.create');
+        Route::get('/konten/{id}/edit',[KontenController::class,'edit']);
+        Route::post('/konten/{id}/update',[KontenController::class,'update']);
         //pelanggan
         Route::get('/pelanggan', [PelangganController::class,'index']);
         //penginapan

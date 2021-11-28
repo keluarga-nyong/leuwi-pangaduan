@@ -30,7 +30,31 @@ class KontenController extends Controller
         return redirect ("/admin/konten");
         // dd($request->all());
     }
+    public function edit($id){
+        $konten=\App\Models\Konten::find($id);
+         return view('admin/konten/edit',['konten' => $konten]);
+         //   dd($konten);
+     }
+     public function update (Request $request,$id){
+        $gambar = $request->file('gambar');
+        
+        if ($gambar_update = ""){
+            $konten->gambar=$konten->gambar;
+        }
+        else{
+            $newImageName = $request->judul . '.' . 
+            $request->gambar->extension();
+            $request->gambar->move(public_path('gambar'), $newImageName);
+        }
+        $konten = Konten::find($id);
+        $konten->judul = $request->input('judul');
+        $konten->isi = $request->input('isi');
+        $konten->tag = $request->input('tag');
+        $konten->gambar = $newImageName;
+        $konten->save();
+         return redirect('/admin/konten');
 
+     }
     public function event(){
         $konten = Konten::all()->where('tag','event');
         return view('user.event',['konten' => $konten,]);

@@ -16,14 +16,12 @@
                                         </a>
                                     </div>
 								</div>
-								<div class="panel-body">
-                                      <div class="col-6">
-                                        
+								<div class="panel-body" style="overflow-x:auto;" >
 									<table class="table table-hover">
 										<thead>
 											<tr>
                                                 <td>Judul</td>
-                                                <td>Isi</td>
+                                                <td >Isi</td>
                                                 <td>Gambar</td>
                                                 <td>Kategori</td>
                                                 <td>aksi</td>
@@ -33,7 +31,7 @@
                                         @foreach($data_konten as $konten )
                                             <tr>
                                             <td>{{$konten->judul}}</td>
-                                            <td>{{$konten->isi}}</td>
+                                            <td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:500px;">{{$konten->isi}}</td>
                                             <td>{{$konten->gambar}}</td>
                                             <td>{{$konten->tag}}</td>
                                             <td><a href="konten/{{$konten->id}}/edit" class="btn btn_warning btn-sm">
