@@ -88,7 +88,7 @@ class TiketController extends Controller
         $nama = Auth::user()->name;
         $text = '&text=Saya ';
         $text1 = ' ingin melakukan pembayaran via transfer dengan nomor tiket ';
-        $nomor_wa = '6287897813432'; 
+        $nomor_wa = '6285697584867'; 
         $url ='https://api.whatsapp.com/send?phone='.$nomor_wa.$text.$nama.$text1.$id_pembayaran;
 
         $tiket = Tiket::create([

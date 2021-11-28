@@ -55,6 +55,12 @@ class KontenController extends Controller
          return redirect('/admin/konten');
 
      }
+     public function delete ($id)
+    {
+        $konten = \App\Models\Konten::find($id);
+        $konten->delete();
+        return redirect('/admin/konten')->with('sukses','data berhasil dihapus');
+    }
     public function event(){
         $konten = Konten::all()->where('tag','event');
         return view('user.event',['konten' => $konten,]);

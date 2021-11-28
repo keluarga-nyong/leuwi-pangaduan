@@ -81,6 +81,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::post('/konten/create', [KontenController::class,'create'])->name('konten.create');
         Route::get('/konten/{id}/edit',[KontenController::class,'edit']);
         Route::post('/konten/{id}/update',[KontenController::class,'update']);
+        Route::get('/konten/{id}/delete',[KontenController::class,'delete']);
         //pelanggan
         Route::get('/pelanggan', [PelangganController::class,'index']);
         //penginapan
@@ -93,6 +94,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::post('/pegawai/create', [AdminController::class,'create'])->name('pegawai.create');
         Route::get('/pegawai/{id}/edit',[AdminController::class,'edit']);
         Route::post('/pegawai/{id}/update',[AdminController::class,'update']);
+        Route::get('/pegawai/{id}/delete',[AdminController::class,'delete']);
         //kehadiran
         Route::get('/kehadiran', [PresentsController::class,'index'])->name('kehadiran.index');
         Route::get('/kehadiran/cari', [PresentsController::class,'search'])->name('kehadiran.search');

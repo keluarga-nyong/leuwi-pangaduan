@@ -40,9 +40,8 @@
                                             <td>{{$pegawai->email}}</td>
                                             <td>{{$pegawai->jabatan}}</td>
                                             <td>{{$pegawai->alamat}}</td>
-                                            <td><a href="pegawai/{{$pegawai->id}}/edit" class="btn btn_warning btn-sm">
-                                                edit
-                                                </a></td>
+                                            <td><a href="pegawai/{{$pegawai->id}}/edit" class="btn btn_warning btn-sm">edit</a></td>
+                                            <td><a href="pegawai/{{$pegawai->id}}/delete" class="btn btn-danger btn-sm" onclick="return confirm('APAKAH ANDA YAKIN ?')"><i class="fa fa-warning">Hapus</i></a></td>
                                         </tr>
                                          @endforeach
 										</tbody>

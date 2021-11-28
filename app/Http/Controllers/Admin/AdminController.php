@@ -104,4 +104,10 @@ class AdminController extends Controller
         $save = $pegawai->save();
         return redirect ("/admin/pegawai");
     }
+    public function delete ($id)
+    {
+        $pegawai = \App\Models\Pegawai::find($id);
+        $pegawai->delete();
+        return redirect('/admin/pegawai')->with('sukses','data berhasil dihapus');
+    }
 }

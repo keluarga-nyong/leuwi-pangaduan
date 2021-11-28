@@ -94,7 +94,7 @@ class BookingController extends Controller
         $id_pembayaran = $request->input('id_pembayaran');
         $text = '&text=Saya%20';
         $text1 = ' ingin melakukan pembayaran via transfer dengan kode booking%20';
-        $nomor_wa = '6287897813432'; 
+        $nomor_wa = '6285697584867'; 
         $url ='https://api.whatsapp.com/send?phone='.$nomor_wa.$text.$nama.$text1.$id_pembayaran;
         
         $booking = Booking::create([
