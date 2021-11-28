@@ -18,13 +18,19 @@ class PenginapanController extends Controller
         return redirect ("/admin/penginapan");
     }
     public function edit($id){
-        $penginapan=\App\Models\penginapan::find($id);
+        $penginapan=\App\Models\Penginapan::find($id);
          return view('admin/penginapan/edit',['penginapan' => $penginapan]);
          //   dd($penginapan);
      }
      public function update (Request $request,$id){
-         $penginapan=\App\Models\penginapan::find($id);
+         $penginapan=\App\Models\Penginapan::find($id);
          $penginapan->update($request->all());
          return redirect('/admin/penginapan');
      }
+     public function delete ($id)
+    {
+        $penginapan = \App\Models\Penginapan::find($id);
+        $penginapan->delete();
+        return redirect('/admin/penginapan')->with('sukses','data berhasil dihapus');
+    }
 }

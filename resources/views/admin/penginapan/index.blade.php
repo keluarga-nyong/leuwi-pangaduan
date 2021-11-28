@@ -35,9 +35,8 @@
                                                 <td>{{$penginapan->nama_villa}}</td>
                                                 <td>{{$penginapan->detail}}</td>
                                                 <td>{{$penginapan->harga}}</td>
-                                                <td><a href="penginapan/{{$penginapan->id}}/edit" class="btn btn_warning btn-sm">
-                                                    edit
-                                                    </a></td>
+                                                <td><a href="penginapan/{{$penginapan->id}}/edit" class="btn btn_warning btn-sm">edit</a></td>
+                                                <td><a href="penginapan/{{$penginapan->id}}/delete" class="btn btn-danger btn-sm" onclick="return confirm('APAKAH ANDA YAKIN ?')"><i class="fa fa-warning">Hapus</i></a></td>
                                             </tr>
                                          @endforeach
 										</tbody>

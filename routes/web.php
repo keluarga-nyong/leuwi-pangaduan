@@ -89,6 +89,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::POST('/penginapan/create',[PenginapanController::class,'create'])->name('penginapan.create');
         Route::get('/penginapan/{id}/edit',[PenginapanController::class,'edit']);
         Route::post('/penginapan/{id}/update',[PenginapanController::class,'update']);
+        Route::get('/penginapan/{id}/delete',[PenginapanController::class,'delete']);
         //pegawai
         Route::get('/pegawai', [AdminController::class,'index']);
         Route::post('/pegawai/create', [AdminController::class,'create'])->name('pegawai.create');
