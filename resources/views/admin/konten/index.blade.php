@@ -34,9 +34,7 @@
                                             <td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:500px;">{{$konten->isi}}</td>
                                             <td>{{$konten->gambar}}</td>
                                             <td>{{$konten->tag}}</td>
-                                            <td><a href="konten/{{$konten->id}}/edit" class="btn btn_warning btn-sm">
-                                                edit
-                                                </a></td>
+                                            <td><a href="konten/{{$konten->id}}/edit" class="btn btn_warning btn-sm"></a></td>
                                         </tr>
                                          @endforeach
 										</tbody>
