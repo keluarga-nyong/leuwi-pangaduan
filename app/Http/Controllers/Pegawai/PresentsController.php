@@ -96,10 +96,6 @@ class PresentsController extends Controller
         $pegawais = Pegawai::all();
         $alpha = false;
 
-        if (date('l') == 'Saturday' || date('l') == 'Sunday') {
-            return redirect()->back()->with('error','Hari Libur Tidak bisa Check In');
-        }
-
         foreach ($pegawais as $pegawai) {
             $absen = Present::whereUserId($pegawai->id)->whereTanggal(date('Y-m-d'))->first();
             if (!$absen) {
@@ -107,12 +103,14 @@ class PresentsController extends Controller
             }
         }
 
+        $ket = 'Alpha';
+        $tggl = date('Y-m-d');
         if ($alpha) {
             foreach ($pegawais as $pegawai) {
                 if ($pegawai->id != $request->user_id) {
                     Present::create([
-                        'keterangan'    => 'Alpha',
-                        'tanggal'       => date('Y-m-d'),
+                        'keterangan'    => $ket,
+                        'tanggal'       => $tggl,
                         'user_id'       => $pegawai->id
                     ]);
                 }

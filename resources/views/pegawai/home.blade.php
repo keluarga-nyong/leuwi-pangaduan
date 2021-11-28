@@ -39,16 +39,6 @@
                                     </button>
                                 </div>
                             @endif
-                            @if ($libur)
-                                <div class="text-center">
-                                    <p>Absen Libur (Hari Libur Nasional {{ $holiday }})</p>
-                                </div>
-                            @else
-                                @if (date('l') == "Saturday" || date('l') == "Sunday") 
-                                    <div class="text-center">
-                                        <p>Absen Libur</p>
-                                    </div>
-                                @else
                                     @if ($present)
                                         @if ($present->keterangan == 'Alpha')
                                             <div class="text-center">
@@ -56,7 +46,7 @@
                                                     <p>Silahkan Check-in</p>
                                                     <form action="{{ route('pegawai.kehadiran.check-in') }}" method="post">
                                                         @csrf
-                                                        <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                                        <input type="hidden" name="user_id" value="{{ Auth::guard('pegawai')->user()->id }}">
                                                         <button class="btn btn-primary" type="submit">Check-in</button>
                                                     </form>
                                                 @else
@@ -101,8 +91,6 @@
                                             @endif
                                         </div>
                                     @endif
-                                @endif
-                            @endif
                         </div>
                     </div>
                 </div>

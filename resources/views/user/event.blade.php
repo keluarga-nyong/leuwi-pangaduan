@@ -23,7 +23,7 @@
                                 </div>
                                 <div class="card-body">
                                     <h3 class="card-title">{{$k->judul}}</h3>
-                                    <p class="justify">{{Str::limit($k->isi, 300, '  .... ')}}</p>
+                                    <p class="justify">{{Str::limit($k->isi, 300, '....')}}</p>
                                 </div>
                             </div>
                         </a>
