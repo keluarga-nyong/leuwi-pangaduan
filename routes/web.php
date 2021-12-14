@@ -32,6 +32,7 @@ Route::get('/', function () {
 Route::view('/home','user.home')->name('home');
 Route::view('/price','user.price')->name('price');
 Route::get('/event',[KontenController::class,'event'])->name('event');
+Route::get('/galeri',[KontenController::class,'galeri'])->name('galeri');
 Route::get('/event/{id}/show',[KontenController::class,'showEvent']);
 Auth::routes();
 
@@ -42,6 +43,7 @@ Route::prefix('user')->name('user.')->group(function(){
     Route::middleware(['guest:web','PreventBackHistory'])->group(function(){
           Route::view('/price','user.price')->name('price');
           Route::get('/event',[KontenController::class,'event'])->name('event');
+          Route::get('/galeri',[KontenController::class,'galeri'])->name('galeri');
           Route::get('/event/{id}/show',[KontenController::class,'showEvent']);
           Route::view('/login','user.login')->name('login');
           Route::view('/register','user.register')->name('register');

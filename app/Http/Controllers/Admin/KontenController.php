@@ -66,6 +66,11 @@ class KontenController extends Controller
         return view('user.event',['konten' => $konten,]);
         // dd($konten);
     }
+    public function galeri(){
+        $konten = Konten::all()->where('tag','galeri');
+        return view('user.galeri',['konten' => $konten,]);
+        // dd($konten);
+    }
 
     public function showEvent($id){
         $konten = Konten::find($id);

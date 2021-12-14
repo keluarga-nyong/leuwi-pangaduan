@@ -27,7 +27,9 @@ class BookingController extends Controller
             'checkin' =>'required',
             'checkout' =>'required',
             'dewasa' =>'required',
-            'anak' =>'required'
+            'anak' =>'required',
+            'include' =>'required',
+            'catatan' =>'required',
         ]);
 
         $startDate = $request->input('checkin');
@@ -40,10 +42,14 @@ class BookingController extends Controller
         $total_hari = $difference->format("%a");
 
         $harga_villa = Penginapan::find($request->input('id_villa'))->harga;
-        $total_harga = $total_hari*$harga_villa; 
+        $total_villa = $total_hari*$harga_villa; 
         
         $dewasa = $request->input('dewasa');
         $anak = $request->input('anak');
+        $include = $request->input('include');
+        $catatan = $request->input('catatan');
+        $date = $request->input('checkin');
+        $hari = date('l', strtotime($date));
 
         $id=$request->input('id_villa');
         
@@ -51,6 +57,9 @@ class BookingController extends Controller
 
         $thn = date('Y') . date('m');
         $cek = Booking::count();
+        
+        $total_harga =  $total_villa;
+        
 
         //Nomor ID Pembayaran Booking
         if($cek == 0) {
@@ -69,12 +78,17 @@ class BookingController extends Controller
             'checkout' => $endDate,
             'dewasa' => $dewasa,
             'anak' => $anak,
+            'hari' => $hari,
+            'harga_villa' => $harga_villa,
+            'total_villa' => $total_villa,
             'total_harga' => $total_harga,
             'total_hari' => $total_hari,
             'villa' => $villa,
             'nomor' => $nomor,
+            'include' => $include,
+            'catatan' => $catatan,
         ]);  
-        // dd($villa);
+        // dd($include);
     }
 
     public function konfirmasi(Request $request)
@@ -86,6 +100,8 @@ class BookingController extends Controller
             'checkout' =>'required',
             'dewasa' =>'required',
             'anak' =>'required',
+            'catatan' =>'required',
+            'include' =>'required',
             'total_harga' =>'required'
         ]);
 
@@ -105,6 +121,8 @@ class BookingController extends Controller
             'checkout' => $request->input('checkout'),
             'dewasa' => $request->input('dewasa'),
             'anak' => $request->input('anak'),
+            'include' => $request->input('include'),
+            'catatan' => $request->input('catatan'),
             'total_harga' => $request->input('total_harga')
         ]);
 

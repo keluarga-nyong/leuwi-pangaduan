@@ -80,6 +80,7 @@
                                                                     <option value="event">Event</option>
                                                                     <option value="fasilitas">Fasilitas</option>
                                                                     <option value="sejarah">Sejarah</option>
+                                                                    <option value="galeri">Galeri</option>
                                                                 </select>
                                                             </div>
                                                             <div class="form-floating">

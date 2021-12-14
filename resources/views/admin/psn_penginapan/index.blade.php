@@ -22,6 +22,8 @@
                                                 <td>Nama Villa</td>
                                                 <td>Check In</td>
                                                 <td>Check Out</td>
+                                                <td>Include</td>
+                                                <td>Catatan</td>
                                                 <td>Total Harga</td>
                                                 <td>Status</td>
                                                 <td>Aksi</td>
@@ -35,6 +37,8 @@
                                                 <td>{{$psn_penginapan->villa->nama_villa}}</td>
                                                 <td>{{$psn_penginapan->checkin}}</td>
                                                 <td>{{$psn_penginapan->checkout}}</td>
+                                                <td>{{$psn_penginapan->include}}</td>
+                                                <td>{{$psn_penginapan->catatan}}</td>
                                                 <td>{{$psn_penginapan->total_harga}}</td>
                                                 <td>
                                                     @if($psn_penginapan->status == 0)

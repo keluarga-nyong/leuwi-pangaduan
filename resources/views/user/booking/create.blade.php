@@ -18,9 +18,9 @@
 								<span class="form-label">Villa</span>
 								<select class="form-control" name="id_villa" required>
 									<option value="" selected hidden>Pilih Villa </option>
-								@foreach($villa as $v)
+									@foreach($villa as $v)
 									<option value="{{$v->id}}">{{$v->nama_villa}}</option>
-								@endforeach
+									@endforeach
 
 								</select>
 								<span class="select-arrow"></span>
@@ -56,7 +56,23 @@
 									</div>
 								</div>
 							</div>
-							
+
+							<div class="form-group">
+								<span class="form-label">Include</span>
+								<select class="form-control" name="include" required>
+									<option value="" selected hidden>- Pilih Include - </option>
+									<option value="-">-</option>
+									<option value="hiking">Hiking</option>
+									<option value="lupa">Lupa</option>
+								</select>
+								<span class="select-arrow"></span>
+							</div>
+
+							<div class="form-group">
+								<span class="form-label">Catatan Tambahan</span>
+								<textarea class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Tidak Wajib" name="catatan"></textarea>
+							</div>
+
 							<div class="form-btn">
 								<button class="submit-btn" type="submit">Pesan</button>
 							</div>

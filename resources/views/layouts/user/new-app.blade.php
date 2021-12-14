@@ -31,7 +31,6 @@
     <link href="{{ asset('user/assets/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('user/assets/css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('user/assets/css/my-custom-styles.css') }}" rel="stylesheet">
-    
 </head>
 <body>
     <!-- WRAPPER -->

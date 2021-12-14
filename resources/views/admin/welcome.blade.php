@@ -34,7 +34,7 @@
                                     <span class="icon"><i class="fa fa-eye"></i></span>
                                     <p>
                                         <h4 class="text-right"> Rp.{{number_format($hsl_villa,0, ',' , '.')}} </h4>
-                                        <h3 class="text-right"> PENJUALAN VILLA</h3>
+                                        <h3 class="text-right"> PENYEWAAN VILLA</h3>
                                     </p>
                                 </div>
                             </div>

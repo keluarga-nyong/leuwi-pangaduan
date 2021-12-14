@@ -35,12 +35,12 @@ class TiketController extends Controller
 
         // Harga Weekend
         if($hari == "Saturday" || $hari == "Sunday") {
-            $harga_anak = 20000;
+            $harga_anak = 15000;
             $harga_dewasa = 30000;
         } 
         // Harga Weekday
         else {
-            $harga_anak = 15000;
+            $harga_anak = 10000;
             $harga_dewasa = 20000;
         }
 

@@ -12,7 +12,7 @@
                                     <!-- Button trigger modal -->
                                     <div class="right">
                                         <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                        Tambah User
+                                        Tambah Pegawai
                                         </a>
                                     </div>
 								</div>

@@ -22,6 +22,8 @@ class CreateBookingsTable extends Migration
             $table->date('checkout');
             $table->string('dewasa')->nullable();
             $table->string('anak')->nullable();
+            $table->string('include')->nullable();
+            $table->string('catatan')->nullable();
             $table->integer('total_harga')->nullable();
             $table->integer('status')->default(0);
             $table->timestamps();
