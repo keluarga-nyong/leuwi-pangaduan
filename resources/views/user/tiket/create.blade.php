@@ -11,6 +11,16 @@
 							<div class="form-header">
 								<h2>Pesan Tiket</h2>
 								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate laboriosam numquam at</p>
+								<br>
+								<a href="{{ route('user.tiket.pemesanan') }}">
+									<div class="card text-center">
+										<br>
+										<h4 class=" mt-2">
+											Lihat Daftar Pemesanan
+										</h4>
+										<br>
+									</div>
+								</a>
 							</div>
 						</div>
 						<form action="{{ route('user.tiket.pesan') }}" method="GET">

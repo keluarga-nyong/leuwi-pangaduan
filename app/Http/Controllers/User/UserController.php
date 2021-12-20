@@ -32,9 +32,9 @@ class UserController extends Controller
           $save = $user->save();
 
           if( $save ){
-              return redirect()->back()->with('success','You are now registered successfully');
+              return redirect()->back()->with('sukses','You are now registered successfully');
           }else{
-              return redirect()->back()->with('fail','Something went wrong, failed to register');
+              return redirect()->back()->with('gagal','Something went wrong, failed to register');
           }
     }
 

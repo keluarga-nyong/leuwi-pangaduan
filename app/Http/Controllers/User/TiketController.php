@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Tiket;
 use Auth;
+use \PDF;    
 
 class TiketController extends Controller
 {
@@ -104,5 +105,30 @@ class TiketController extends Controller
             'id_pembayaran' => $id_pembayaran,
             'url' => $url,
         ]);  
+    }
+    public function pemesanan()
+    {
+        $id = Auth::user()->id;
+        $booking = Tiket::all()->where('id_user',$id);
+        return view('user.tiket.pemesanan',[
+            'id' => $id,
+            'booking' => $booking,
+        ]);
+    }
+
+    public function print($id)  
+    {
+        $booking = Tiket::find($id);
+        $format = '.pdf';
+        $nama = $booking->id_pembayaran.$format;
+        $tanggal = date('d-m-Y');
+        $pdf = PDF::loadView('user.tiket.pdf',[
+            'id' => $id,
+            'tanggal' => $tanggal,
+            'booking' => $booking,
+        ]);
+        return $pdf->stream($nama);
+        // dd($booking);
+
     }
 }

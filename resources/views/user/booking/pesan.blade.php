@@ -61,7 +61,7 @@
 								</div>
 								<div class="col-md-3">
 									<div class="form-group">
-										<input class="input-orang bold" value="{{$dewasa}} Orang" type="text" name="dewasa" id="dewasa" required readonly>	
+										<input class="input-orang bold" value="{{$dewasa}}" type="text" name="dewasa" id="dewasa" required readonly><span>Orang</span>	
 									</div>
 								</div>
 								<div class="col-md-3">
@@ -71,7 +71,7 @@
 								</div>
 								<div class="col-md-3">
 									<div class="form-group">
-										<input class="input-orang bold" value="{{$anak}} Orang" type="text" name="anak" id="anak" required readonly>	
+										<input class="input-orang bold" value="{{$anak}}" type="text" name="anak" id="anak" required readonly><span>Orang</span>
 									</div>
 								</div>
 							</div>
@@ -101,7 +101,6 @@
 									</div>
 								</div>
 							</div>
-							
 							@if($include == 'hiking')
 								@if($hari == "Saturday" || $hari == "Sunday")
 									@php 
@@ -157,6 +156,8 @@
 									</div>
 								</div>
 							</div>
+							@else
+							<input class="input-pesan" value="{{$include}}" type="text" name="include" id="include" required readonly hidden>	
 							@endif
 							<hr style=" margin-top:0;">
 							<div class="row">

@@ -10,6 +10,16 @@
 							<div class="form-header">
 								<h2>Make your reservation</h2>
 								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate laboriosam numquam at</p>
+								<br>
+								<a href="{{ route('user.booking.pemesanan') }}">
+									<div class="card text-center">
+										<br>
+										<h4 class=" mt-2">
+											Lihat Daftar Pemesanan
+										</h4>
+										<br>
+									</div>
+								</a>
 							</div>
 						</div>
 						<form action="{{ route('user.booking.pesan') }}" method="GET">
@@ -71,6 +81,7 @@
 							<div class="form-group">
 								<span class="form-label">Catatan Tambahan</span>
 								<textarea class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Tidak Wajib" name="catatan"></textarea>
+								<span>*masukan "-" jika tidak diisi</span>
 							</div>
 
 							<div class="form-btn">

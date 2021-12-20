@@ -9,6 +9,7 @@ use App\Models\Booking;
 use App\Models\Penginapan;
 use DateTime;
 use Auth;
+use \PDF;    
 
 class BookingController extends Controller
 {
@@ -130,5 +131,30 @@ class BookingController extends Controller
             'url' => $url
         ]);
         // dd($nama);
+    }
+    public function pemesanan()
+    {
+        $id = Auth::user()->id;
+        $booking = Booking::all()->where('id_user',$id);
+        return view('user.booking.pemesanan',[
+            'id' => $id,
+            'booking' => $booking,
+        ]);
+    }
+
+    public function print($id)  
+    {
+        $booking = Booking::find($id);
+        $format = '.pdf';
+        $nama = $booking->id_pembayaran.$format;
+        $tanggal = date('d-m-Y');
+        $pdf = PDF::loadView('user.booking.pdf',[
+            'id' => $id,
+            'tanggal' => $tanggal,
+            'booking' => $booking,
+        ]);
+        return $pdf->stream($nama);
+        // dd($booking);
+
     }
 }

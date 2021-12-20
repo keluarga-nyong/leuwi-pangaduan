@@ -57,10 +57,14 @@ Route::prefix('user')->name('user.')->group(function(){
           Route::get('/booking', [BookingController::class,'index']);
           Route::get('/booking/pesan', [BookingController::class, 'pesan'])->name('booking.pesan');
           Route::post('/booking/konfirmasi', [BookingController::class, 'konfirmasi'])->name('booking.konfirmasi');
+          Route::get('/booking/pemesanan', [BookingController::class, 'pemesanan'])->name('booking.pemesanan');
+          Route::get('/booking/{id}/print', [BookingController::class, 'print']);
   
           Route::view('/tiket','user.tiket.create')->name('tiket');
           Route::get('/tiket/pesan', [TiketController::class, 'pesan'])->name('tiket.pesan');
           Route::post('/tiket/konfirmasi', [TiketController::class, 'konfirmasi'])->name('tiket.konfirmasi');
+          Route::get('/tiket/pemesanan', [TiketController::class, 'pemesanan'])->name('tiket.pemesanan');
+          Route::get('/tiket/{id}/print', [TiketController::class, 'print']);
 
           Route::post('/logout',[UserController::class,'logout'])->name('logout');
           Route::get('/add-new',[UserController::class,'add'])->name('add');
